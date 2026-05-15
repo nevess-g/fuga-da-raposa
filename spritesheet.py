@@ -23,7 +23,7 @@ class Raposa(pygame.sprite.Sprite):
         # assets/img/Sprites
         sprite_dir = os.path.join("assets", "img", "Sprites")
 
-                # ====== SPRITES DE MOVIMENTO ======
+        # ====== SPRITES DE MOVIMENTO ======
 
         # Lista de imagens da animação andando para a esquerda
         self.sprites_left = [
@@ -58,3 +58,20 @@ class Raposa(pygame.sprite.Sprite):
         self.stopped_image = pygame.image.load(
             os.path.join(sprite_dir, "Parada.png")
         )
+
+        # ====== CONTROLE DE ANIMAÇÃO ======
+
+        # Direção inicial da raposa
+        self.direction = "right"
+
+        # Define a lista de sprites inicial
+        self.sprites = self.sprites_right
+
+        # Índice do frame atual da animação
+        self.frame_index = 0
+
+        # Temporizador usado para controlar velocidade da animação
+        self.frame_timer = 0
+
+        # Quantos ciclos esperar antes de trocar o frame
+        self.frame_delay = 6
