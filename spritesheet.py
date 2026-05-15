@@ -22,3 +22,39 @@ class Raposa(pygame.sprite.Sprite):
         # Define o diretório onde estão as imagens da raposa
         # assets/img/Sprites
         sprite_dir = os.path.join("assets", "img", "Sprites")
+
+                # ====== SPRITES DE MOVIMENTO ======
+
+        # Lista de imagens da animação andando para a esquerda
+        self.sprites_left = [
+            pygame.image.load(os.path.join(sprite_dir, "Esq1.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Esq2.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Esq3.png")),
+        ]
+
+        # Lista de imagens da animação andando para a direita
+        self.sprites_right = [
+            pygame.image.load(os.path.join(sprite_dir, "Dir1.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Dir2.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Dir3.png")),
+        ]
+
+        # Lista de imagens da animação andando para cima
+        self.sprites_up = [
+            pygame.image.load(os.path.join(sprite_dir, "Cima1.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Cima2.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Cima3.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Cima4.png")),
+        ]
+
+        # Lista de imagens da animação andando para baixo
+        self.sprites_down = [
+            pygame.image.load(os.path.join(sprite_dir, "Baixo1.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Baixo2.png")),
+            pygame.image.load(os.path.join(sprite_dir, "Baixo3.png")),
+        ]
+
+        # Imagem usada quando a raposa está parada
+        self.stopped_image = pygame.image.load(
+            os.path.join(sprite_dir, "Parada.png")
+        )
