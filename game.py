@@ -59,7 +59,7 @@ while game:
         elif estado_jogo == "fases":
             # captura a posição do mouse
             pos_mouse = pygame.mouse.get_pos()
-            resultado = menu.processar_eventos(event, pos_mouse)
+            resultado = menu_fases.processar_eventos(event, pos_mouse) # feito com Copilot
 
             if resultado == "fase1":
                     estado_jogo = "jogando"

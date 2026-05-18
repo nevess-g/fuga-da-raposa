@@ -146,19 +146,26 @@ class Menu:
         return None
 
 class Fases:
+
+    # construtor da classe Fases
     def __init__(self):
+
+        # caminho das imagens e das fontes
         img_dir = os.path.join("assets", "img")
         font_dir = os.path.join("assets", "fonts")
 
+        # definição da imagem de fundo e das fontes
         self.fundo = pygame.image.load(os.path.join(img_dir, "fundo.png"))
         self.fonte_botoes = pygame.font.Font(os.path.join(font_dir, "PixelGameFont.ttf"), 40)
         self.fonte_titulo = pygame.font.Font(os.path.join(font_dir, "PixelGameFont.ttf"), 56)
 
+        # parâmetros de tamanho, espaçamento, posição no eixo X e no eixo Y
         button_size = 150
         spacing = 50
         start_x = WIDTH // 2 - (3 * button_size + 2 * spacing) // 2
         y_fases = HEIGHT // 2 - button_size // 2
 
+        # criação dos botões com a classe Botão, passando os parâmetros anteriores
         self.botao_fase1 = Botao(start_x, y_fases, button_size, button_size, "Fase 1", self.fonte_botoes, habilitado=True) # feito com Copilot
         self.botao_fase2 = Botao(start_x + button_size + spacing, y_fases, button_size, button_size, "Fase 2", self.fonte_botoes, habilitado=False) # feito com Copilot
         self.botao_fase3 = Botao(start_x + 2 * (button_size + spacing), y_fases, button_size, button_size, "Fase 3", self.fonte_botoes, habilitado=False) # feito com Copilot
@@ -166,16 +173,17 @@ class Fases:
 
         self.botoes = [self.botao_fase1, self.botao_fase2, self.botao_fase3, self.botao_voltar] # feito com Copilot
 
+    # método que exibe a tela de fases na janela
     def desenhar(self, surface):
         surface.blit(self.fundo, (0, 0))
-
-        titulo = self.fonte_titulo.render("Selecione a fase", False, BRANCO)
+        titulo = self.fonte_titulo.render("Selecione a fase", False, BRANCO) # feito com Copilot
         titulo_rect = titulo.get_rect(center=(WIDTH // 2, HEIGHT // 5)) # feito com Copilot
-        surface.blit(titulo, titulo_rect)
+        surface.blit(titulo, titulo_rect) # feito com Copilot
 
         for botao in self.botoes:
             botao.desenhar(surface)
     
+    # processa eventos da classe Fases
     def processar_eventos(self, evento, pos_mouse):
         for botao in self.botoes:
             botao.atualizar_hover(pos_mouse)
