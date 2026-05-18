@@ -26,6 +26,9 @@ raposa = Raposa()
 # instancia a classe Menu
 menu = Menu()
 
+# instancia a classe Fases
+menu_fases = Fases()
+
 # adiciona ao grupo de sprites o sprite atualizado da raposa
 all_sprites.add(raposa)
 
@@ -43,20 +46,33 @@ while game:
         
         # verifica o estado do jogo
         if estado_jogo == "menu":
-
             # captura a posição do mouse
             pos_mouse = pygame.mouse.get_pos()
             resultado = menu.processar_eventos(event, pos_mouse)
 
             # define o novo estado do jogo de acordo com o botão pressionado
             if resultado == "jogar":
-                estado_jogo = "jogando"
+                estado_jogo = "fases"
             elif resultado == "sair":
                 game = False
+        
+        elif estado_jogo == "fases":
+            # captura a posição do mouse
+            pos_mouse = pygame.mouse.get_pos()
+            resultado = menu.processar_eventos(event, pos_mouse)
+
+            if resultado == "fase1":
+                    estado_jogo = "jogando"
+                    all_sprites.add(raposa)
+            elif resultado == "voltar":
+                estado_jogo = "menu"
     
     if estado_jogo == "menu":
         # desenha o menu na surface da janela
         menu.desenhar(janela)
+    elif estado_jogo == "fases":
+        menu_fases.desenhar(janela)
+
     elif estado_jogo == "jogando":
         janela.fill(PRETO)
         # verifica as teclas pressionadas 
