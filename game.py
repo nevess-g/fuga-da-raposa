@@ -2,6 +2,7 @@ import pygame
 from valores import *
 from spritesheet import *
 from menu import *
+import mapa
 
 # inicia o módulo do pygame
 pygame.init()
@@ -28,9 +29,6 @@ menu = Menu()
 
 # instancia a classe Fases
 menu_fases = Fases()
-
-# adiciona ao grupo de sprites o sprite atualizado da raposa
-all_sprites.add(raposa)
 
 while game:
     # define a velocidade do jogo
@@ -64,6 +62,7 @@ while game:
             if resultado == "fase1":
                     estado_jogo = "jogando"
                     all_sprites.add(raposa)
+                    mapa.iniciar_fase(1) # feito com Copilot
             elif resultado == "voltar":
                 estado_jogo = "menu"
     
@@ -95,6 +94,11 @@ while game:
         # atualiza os sprites
         all_sprites.update()
         all_sprites.draw(janela)
+
+        old_rect = raposa.rect.copy()
+        all_sprites.update()
+        mapa.atualizar(raposa, old_rect)
+        mapa.desenhar(janela, all_sprites, raposa)
     
     # atualiza a tela
     pygame.display.update()
